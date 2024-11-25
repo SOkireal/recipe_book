@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/get_catalog_fragment"
+        android:icon="@drawable/ic_get_catalog"
+        android:title="Category"
+        android:orderInCategory="1" />
+
+    <item
+        android:id="@+id/get_favorites_fragment"
+        android:icon="@drawable/ic_get_favorites"
+        android:title="Favorites"
+        android:orderInCategory="2" />
+
+</menu>

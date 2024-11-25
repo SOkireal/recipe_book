@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecipeBook</string>
+    <string name="search_name_recipe_sv">Введите название блюда</string>
+    <string name="name_recipe">Name Recipe</string>
+    <string name="title_logo">Recipe Book</string>
+    <string name="error_load_recipe_list">The recipe list could not be loaded :(</string>
+</resources>

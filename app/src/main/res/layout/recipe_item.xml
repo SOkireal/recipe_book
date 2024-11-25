@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/horizontal_margins_recipe_item"
+    android:layout_marginTop="@dimen/vertical_margins_recipe_item"
+    android:layout_marginBottom="@dimen/vertical_margins_recipe_item"
+    android:layout_marginEnd="@dimen/horizontal_margins_recipe_item"
+    app:cardCornerRadius="@dimen/corner_radius_recipe_item">
+
+    <ImageView
+        android:id="@+id/recipe_image_iv"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_recipe_item"
+        android:background="@color/background_title_image_recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/stat_notify_sync" />
+
+    <TextView
+        android:id="@+id/recipe_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/background_title_name_recipe"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/name_recipe"
+        android:textSize="@dimen/title_name_recipe"
+        android:maxLines="1"
+        android:paddingHorizontal="10dp"
+        android:ellipsize="end"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        tools:ignore="RtlCompat,SpUsage" />
+
+</androidx.cardview.widget.CardView>

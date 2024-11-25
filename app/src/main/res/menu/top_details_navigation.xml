@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/back_button"
+        android:icon="@drawable/baseline_arrow_back_ios_24"
+        android:title="Back"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/add_favorite_button"
+        android:icon="@drawable/baseline_favorite_border_24"
+        android:title="add/delete"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom" />
+
+</menu>
