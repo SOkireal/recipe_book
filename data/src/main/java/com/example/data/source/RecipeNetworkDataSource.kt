@@ -1,6 +1,8 @@
 package com.example.data.source
 
+import com.example.data.model.SearchRequestDataModel
 import com.example.data.retrofit.RecipeApi
+import com.example.domain.domain.model.SearchRequestModel
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Companion.invoke
 import okhttp3.OkHttpClient
@@ -24,6 +26,7 @@ object RecipeNetworkDataSource {
             .request()
             .url
             .newBuilder()
+            .addQueryParameter("apiKey", "c6635fa1e0594590995d6badc043d882")
             .build()
 
         val request = chain
@@ -49,4 +52,7 @@ object RecipeNetworkDataSource {
         .create(RecipeApi::class.java)
 
     suspend fun getCatalog() = recipeApi.getCatalog()
+    suspend fun getIngredients(id: Int) = recipeApi.getIngredients(id)
+    suspend fun getSteps(id: Int) = recipeApi.getSteps(id)
+    suspend fun getRecipeByName(recipeName: SearchRequestDataModel) = recipeApi.getRecipeByName(recipeName.searchRecipeByName)
 }

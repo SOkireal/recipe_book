@@ -17,7 +17,4 @@ interface AppComponent {
     fun inject(catalogFragment: CatalogFragment)
     fun inject(favoritesFragment: FavoritesFragment)
     fun inject(detailsFragment: DetailsFragment)
-    fun getGetCatalogUseCase(): GetCatalogUseCase
-    fun getGetFavoritesUseCase(): GetFavoritesUseCase
-    fun getGetDetailsUseCase(): GetDetailsUseCase
 }

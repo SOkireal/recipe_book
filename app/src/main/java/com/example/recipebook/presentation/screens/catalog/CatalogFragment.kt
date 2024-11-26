@@ -2,9 +2,11 @@ package com.example.recipebook.presentation.screens.catalog
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView.OnQueryTextListener
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -49,10 +51,22 @@ class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRec
             searchRecipeSv.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 titleLogoTv.isVisible = !hasFocus
             }
+
+            searchRecipeSv.setOnQueryTextListener(object: OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    catalogViewModel.onSearchClicked(query)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return true
+                }
+            })
         }
 
         lifecycleScope.launch {
             catalogViewModel.stateFlow.collect { viewState ->
+                Log.d("VVV", viewState.toString())
                 when (viewState) {
                     is CatalogFragmentViewState.Ready -> showReady(viewState)
                     is CatalogFragmentViewState.Loading -> showLoading()

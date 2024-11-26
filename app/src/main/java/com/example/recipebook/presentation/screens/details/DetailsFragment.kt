@@ -81,14 +81,27 @@ class DetailsFragment : Fragment() {
 
     private fun showReady(ready: DetailsFragmentViewState.Ready) {
         detailsAdapter.setData(ready.detailsItems)
+        binding.apply {
+            detailsListRv.isVisible = true
+            loadingPb.isVisible = false
+            errorLoadRecipeList.isVisible = false
+        }
     }
 
     private fun showLoading() {
-
+        binding.apply {
+            detailsListRv.isVisible = false
+            loadingPb.isVisible = true
+            errorLoadRecipeList.isVisible = false
+        }
     }
 
     private fun showError(error: DetailsFragmentViewState.Error) {
-
+        binding.apply {
+            detailsListRv.isVisible = false
+            loadingPb.isVisible = false
+            errorLoadRecipeList.isVisible = true
+        }
     }
 
     companion object {

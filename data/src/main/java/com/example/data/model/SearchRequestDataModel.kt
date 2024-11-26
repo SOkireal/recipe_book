@@ -1,4 +1,5 @@
 package com.example.data.model
 
-class SearchRequestDataModel {
-}
+data class SearchRequestDataModel(
+    val searchRecipeByName: String
+)

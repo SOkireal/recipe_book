@@ -1,4 +1,5 @@
 package com.example.domain.domain.model
 
-class SearchRequestModel {
-}
+data class SearchRequestModel(
+    val searchRecipeByName: String
+)

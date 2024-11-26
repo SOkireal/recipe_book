@@ -3,6 +3,7 @@ package com.example.recipebook.di
 import com.example.domain.domain.usecase.GetCatalogUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.GetFavoritesUseCase
+import com.example.domain.domain.usecase.SearchUseCase
 import com.example.recipebook.presentation.navigation.FragmentRouter
 import com.example.recipebook.presentation.screens.catalog.CatalogViewModel
 import com.example.recipebook.presentation.screens.details.DetailsViewModel
@@ -21,8 +22,8 @@ object AppModule {
     }
 
     @Provides
-    fun provideCatalogViewModel(getCatalogUseCase: GetCatalogUseCase, fragmentRouter: FragmentRouter): CatalogViewModel {
-        return CatalogViewModel(getCatalogUseCase, fragmentRouter)
+    fun provideCatalogViewModel(getCatalogUseCase: GetCatalogUseCase, searchUseCase: SearchUseCase, fragmentRouter: FragmentRouter): CatalogViewModel {
+        return CatalogViewModel(getCatalogUseCase, searchUseCase, fragmentRouter)
     }
 
     @Provides
