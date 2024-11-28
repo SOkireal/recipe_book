@@ -41,7 +41,7 @@ class FragmentRouter {
 
     fun showDetailsFragment(recipeModel: RecipeModel) {
         val detailsFragment = manager.findFragmentByTag(DetailsFragment.TAG) ?: DetailsFragment()
-        detailsFragment.arguments = bundleOf(DetailsFragment.EXTRA_RECIPE_ID to recipeModel.id)
+        detailsFragment.arguments = bundleOf(DetailsFragment.EXTRA_RECIPE_ID to recipeModel)
         showFragment(detailsFragment, DetailsFragment.TAG)
         bottomNavigationBarHandler.hideBottomNavigationBar()
     }

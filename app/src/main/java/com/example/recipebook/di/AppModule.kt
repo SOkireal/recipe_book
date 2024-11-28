@@ -1,5 +1,7 @@
 package com.example.recipebook.di
 
+import android.content.Context
+import com.example.domain.domain.usecase.AddFavoriteUseCase
 import com.example.domain.domain.usecase.GetCatalogUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.GetFavoritesUseCase
@@ -13,7 +15,12 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object AppModule {
+class AppModule(private val context: Context) {
+
+    @Provides
+    fun provideContext(): Context {
+        return context
+    }
 
     @Provides
     @Singleton
@@ -22,17 +29,28 @@ object AppModule {
     }
 
     @Provides
-    fun provideCatalogViewModel(getCatalogUseCase: GetCatalogUseCase, searchUseCase: SearchUseCase, fragmentRouter: FragmentRouter): CatalogViewModel {
+    fun provideCatalogViewModel(
+        getCatalogUseCase: GetCatalogUseCase,
+        searchUseCase: SearchUseCase,
+        fragmentRouter: FragmentRouter,
+    ): CatalogViewModel {
         return CatalogViewModel(getCatalogUseCase, searchUseCase, fragmentRouter)
     }
 
     @Provides
-    fun provideFavoritesViewModel(getFavoritesUseCase: GetFavoritesUseCase, fragmentRouter: FragmentRouter): FavoritesViewModel {
+    fun provideFavoritesViewModel(
+        getFavoritesUseCase: GetFavoritesUseCase,
+        fragmentRouter: FragmentRouter,
+    ): FavoritesViewModel {
         return FavoritesViewModel(getFavoritesUseCase, fragmentRouter)
     }
 
     @Provides
-    fun provideDetailsViewModel(getDetailsUseCase: GetDetailsUseCase, fragmentRouter: FragmentRouter): DetailsViewModel {
-        return DetailsViewModel(getDetailsUseCase, fragmentRouter)
+    fun provideDetailsViewModel(
+        getDetailsUseCase: GetDetailsUseCase,
+        addFavoriteUseCase: AddFavoriteUseCase,
+        fragmentRouter: FragmentRouter,
+    ): DetailsViewModel {
+        return DetailsViewModel(getDetailsUseCase, addFavoriteUseCase, fragmentRouter)
     }
 }

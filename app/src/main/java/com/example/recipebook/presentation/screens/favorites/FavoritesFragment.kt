@@ -46,6 +46,8 @@ class FavoritesFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickR
             searchRecipeSv.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 titleLogoTv.isVisible = !hasFocus
             }
+
+
         }
 
         lifecycleScope.launch {

@@ -2,6 +2,7 @@ package com.example.recipebook.app
 
 import android.app.Application
 import com.example.recipebook.di.AppComponent
+import com.example.recipebook.di.AppModule
 import com.example.recipebook.di.DaggerAppComponent
 
 class App : Application() {
@@ -14,6 +15,6 @@ class App : Application() {
     }
 
     private fun initializeDagger() {
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(context = this)).build()
     }
 }

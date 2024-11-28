@@ -1,8 +1,9 @@
 package com.example.data.source
 
+import com.example.data.model.RecipeDataModel
 import com.example.data.model.SearchRequestDataModel
 import com.example.data.retrofit.RecipeApi
-import com.example.domain.domain.model.SearchRequestModel
+import com.example.domain.domain.model.RecipeModel
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Companion.invoke
 import okhttp3.OkHttpClient
@@ -10,9 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RecipeNetworkDataSource {
-
-    private const val BASE_URL = "https://api.spoonacular.com/"
+class RecipeNetworkDataSource {
 
     private val loggingInterceptor = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -52,7 +51,11 @@ object RecipeNetworkDataSource {
         .create(RecipeApi::class.java)
 
     suspend fun getCatalog() = recipeApi.getCatalog()
-    suspend fun getIngredients(id: Int) = recipeApi.getIngredients(id)
-    suspend fun getSteps(id: Int) = recipeApi.getSteps(id)
+    suspend fun getIngredients(recipeDataModel: RecipeDataModel) = recipeApi.getIngredients(recipeDataModel.id)
+    suspend fun getSteps(recipeDataModel: RecipeDataModel) = recipeApi.getSteps(recipeDataModel.id)
     suspend fun getRecipeByName(recipeName: SearchRequestDataModel) = recipeApi.getRecipeByName(recipeName.searchRecipeByName)
+
+    companion object {
+        private const val BASE_URL = "https://api.spoonacular.com/"
+    }
 }

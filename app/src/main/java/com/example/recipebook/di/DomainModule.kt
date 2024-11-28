@@ -1,6 +1,7 @@
 package com.example.recipebook.di
 
 import com.example.domain.domain.repository.RecipeRepository
+import com.example.domain.domain.usecase.AddFavoriteUseCase
 import com.example.domain.domain.usecase.GetCatalogUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.GetFavoritesUseCase
@@ -16,8 +17,8 @@ class DomainModule {
     }
 
     @Provides
-    fun provideGetFavoritesUseCase(): GetFavoritesUseCase {
-        return GetFavoritesUseCase()
+    fun provideGetFavoritesUseCase(recipeRepository: RecipeRepository): GetFavoritesUseCase {
+        return GetFavoritesUseCase(recipeRepository)
     }
 
     @Provides
@@ -26,7 +27,12 @@ class DomainModule {
     }
 
     @Provides
-    fun provideSearchUseCase(recipeRepository: RecipeRepository) : SearchUseCase {
+    fun provideSearchUseCase(recipeRepository: RecipeRepository): SearchUseCase {
         return SearchUseCase(recipeRepository)
+    }
+
+    @Provides
+    fun provideAddFavoriteUseCase(recipeRepository: RecipeRepository): AddFavoriteUseCase {
+        return AddFavoriteUseCase(recipeRepository)
     }
 }

@@ -5,16 +5,6 @@
     android:background="@color/background_fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.widget.SearchView
-        android:id="@+id/search_recipe_sv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-        android:searchIcon="@drawable/baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/title_logo_tv"
         android:layout_width="wrap_content"
@@ -28,6 +18,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/search_recipe_sv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.SearchView
+        android:id="@+id/search_recipe_sv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:searchIcon="@drawable/baseline_search_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipes_list_recycler_view"

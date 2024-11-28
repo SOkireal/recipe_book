@@ -7,6 +7,8 @@ import com.example.domain.domain.usecase.GetFavoritesUseCase
 import com.example.recipebook.presentation.navigation.FragmentRouter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(val getFavoritesUseCase: GetFavoritesUseCase, val fragmentRouter: FragmentRouter): ViewModel() {
@@ -15,8 +17,9 @@ class FavoritesViewModel(val getFavoritesUseCase: GetFavoritesUseCase, val fragm
 
     init {
         viewModelScope.launch {
-            val viewState = RecipeModelToFavoritesFragmentViewStateMapper.invoke(getFavoritesUseCase())
-            _stateFlow.emit(viewState)
+            getFavoritesUseCase()
+                .map { RecipeModelToFavoritesFragmentViewStateMapper(it) }
+                .collect { _stateFlow.emit(it) }
         }
     }
 
