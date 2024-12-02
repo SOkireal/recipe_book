@@ -49,7 +49,7 @@ object DetailsModelToDetailsFragmentViewStateMapper: ((DetailsModel) -> DetailsF
                 )
             }
 
-            DetailsFragmentViewState.Ready(detailsItems)
+            DetailsFragmentViewState.Ready(detailsItems, detailsModel.isFavorite)
         }
     }
 }

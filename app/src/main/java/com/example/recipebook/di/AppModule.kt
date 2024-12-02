@@ -5,6 +5,7 @@ import com.example.domain.domain.usecase.AddFavoriteUseCase
 import com.example.domain.domain.usecase.GetCatalogUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.GetFavoritesUseCase
+import com.example.domain.domain.usecase.RemoveFavoriteUseCase
 import com.example.domain.domain.usecase.SearchUseCase
 import com.example.recipebook.presentation.navigation.FragmentRouter
 import com.example.recipebook.presentation.screens.catalog.CatalogViewModel
@@ -49,8 +50,14 @@ class AppModule(private val context: Context) {
     fun provideDetailsViewModel(
         getDetailsUseCase: GetDetailsUseCase,
         addFavoriteUseCase: AddFavoriteUseCase,
+        removeFavoriteUseCase: RemoveFavoriteUseCase,
         fragmentRouter: FragmentRouter,
     ): DetailsViewModel {
-        return DetailsViewModel(getDetailsUseCase, addFavoriteUseCase, fragmentRouter)
+        return DetailsViewModel(
+            getDetailsUseCase,
+            addFavoriteUseCase,
+            removeFavoriteUseCase,
+            fragmentRouter,
+        )
     }
 }

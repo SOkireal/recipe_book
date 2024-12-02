@@ -11,5 +11,6 @@ interface RecipeRepository {
     suspend fun getDetails(recipeModel: RecipeModel): DetailsModel
     suspend fun getRecipeByName(recipeName: SearchRequestModel): List<RecipeModel>
     suspend fun addFavorite(recipeModel: RecipeModel)
+    suspend fun removeFavorite(recipeModel: RecipeModel)
     fun getFavoriteRecipes(): Flow<List<RecipeModel>>
 }

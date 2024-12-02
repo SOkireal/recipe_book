@@ -5,6 +5,7 @@ import com.example.domain.domain.usecase.AddFavoriteUseCase
 import com.example.domain.domain.usecase.GetCatalogUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.GetFavoritesUseCase
+import com.example.domain.domain.usecase.RemoveFavoriteUseCase
 import com.example.domain.domain.usecase.SearchUseCase
 import dagger.Module
 import dagger.Provides
@@ -34,5 +35,10 @@ class DomainModule {
     @Provides
     fun provideAddFavoriteUseCase(recipeRepository: RecipeRepository): AddFavoriteUseCase {
         return AddFavoriteUseCase(recipeRepository)
+    }
+
+    @Provides
+    fun provideRemoveFavoriteUseCase(recipeRepository: RecipeRepository): RemoveFavoriteUseCase {
+        return RemoveFavoriteUseCase(recipeRepository)
     }
 }

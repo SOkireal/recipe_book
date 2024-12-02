@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import android.util.Log
 import com.example.data.mapper.CatalogDataModelToRecipeModelMapper
 import com.example.data.mapper.DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper
 import com.example.data.mapper.FavoriteRecipesDataModelToRecipeModelMapper
@@ -27,9 +28,12 @@ class RecipeRepositoryImpl(
 
     override suspend fun getDetails(recipeModel: RecipeModel): DetailsModel {
         val recipeDataModel = RecipeModelToRecipeDataModelMapper(recipeModel)
+        val favoriteRecipeDataModel = RecipeModelToFavoriteRecipeDataModelMapper(recipeModel)
         val ingredients = recipeNetworkDataSource.getIngredients(recipeDataModel)
         val steps = recipeNetworkDataSource.getSteps(recipeDataModel)
-        return DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper(ingredients, steps)
+        val isFavorite = favoriteDBDataSource.checkFavorite(favoriteRecipeDataModel)
+        Log.d("###", isFavorite.toString())
+        return DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper(ingredients, steps, isFavorite)
     }
 
     override suspend fun getRecipeByName(recipeName: SearchRequestModel): List<RecipeModel> {
@@ -41,6 +45,11 @@ class RecipeRepositoryImpl(
     override suspend fun addFavorite(recipeModel: RecipeModel) {
         val favoriteRecipeDataModel = RecipeModelToFavoriteRecipeDataModelMapper(recipeModel)
         favoriteDBDataSource.addFavorite(favoriteRecipeDataModel)
+    }
+
+    override suspend fun removeFavorite(recipeModel: RecipeModel) {
+        val favoriteRecipeDataModel = RecipeModelToFavoriteRecipeDataModelMapper(recipeModel)
+        favoriteDBDataSource.removeFavorite(favoriteRecipeDataModel)
     }
 
     override fun getFavoriteRecipes(): Flow<List<RecipeModel>> {

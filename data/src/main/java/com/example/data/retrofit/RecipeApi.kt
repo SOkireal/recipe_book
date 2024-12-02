@@ -21,6 +21,6 @@ interface RecipeApi {
     @GET("recipes/complexSearch")
     suspend fun getRecipeByName(
         @Query("query") name: String,
-        @Query("number") number: Int = 10
+        @Query("number") number: Int = 30
     ): CatalogDataModel
 }

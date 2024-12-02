@@ -1,4 +1,13 @@
 package com.example.domain.domain.usecase
 
-class RemoveFavoriteUseCase {
+import com.example.domain.domain.model.RecipeModel
+import com.example.domain.domain.repository.RecipeRepository
+
+class RemoveFavoriteUseCase(
+    private val repository: RecipeRepository
+): (suspend (RecipeModel) -> Unit) {
+    override suspend fun invoke(recipeModel: RecipeModel) {
+        repository.removeFavorite(recipeModel)
+    }
+
 }

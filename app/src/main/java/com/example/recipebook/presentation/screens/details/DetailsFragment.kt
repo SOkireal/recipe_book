@@ -63,14 +63,13 @@ class DetailsFragment : Fragment() {
             }
 
             addFavoritesIv.setOnClickListener {
-                addFavoritesIv.isVisible = false
-                deleteFavoritesIv.isVisible = true
-                detailsViewModel.onAddFavoritesClick()
+                showFavoriteButton(true)
+                detailsViewModel.onAddFavoriteClick()
             }
 
             deleteFavoritesIv.setOnClickListener {
-                deleteFavoritesIv.isVisible = false
-                addFavoritesIv.isVisible = true
+                showFavoriteButton(false)
+                detailsViewModel.onRemoveFavoriteClick()
             }
 
             lifecycleScope.launch {
@@ -88,6 +87,7 @@ class DetailsFragment : Fragment() {
 
     private fun showReady(ready: DetailsFragmentViewState.Ready) {
         detailsAdapter.setData(ready.detailsItems)
+        showFavoriteButton(ready.isFavorite)
         binding.apply {
             detailsListRv.isVisible = true
             loadingPb.isVisible = false
@@ -108,6 +108,13 @@ class DetailsFragment : Fragment() {
             detailsListRv.isVisible = false
             loadingPb.isVisible = false
             errorLoadRecipeList.isVisible = true
+        }
+    }
+
+    private fun showFavoriteButton(show: Boolean) {
+        binding.apply {
+            addFavoritesIv.isVisible = !show
+            deleteFavoritesIv.isVisible = show
         }
     }
 

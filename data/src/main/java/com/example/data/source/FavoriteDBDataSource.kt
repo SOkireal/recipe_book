@@ -8,9 +8,17 @@ import kotlinx.coroutines.flow.Flow
 
 class FavoriteDBDataSource(context: Context) {
     private val favoritesDb = FavoritesDB.getDb(context)
+
     suspend fun addFavorite(favoriteRecipeDataModel: FavoriteRecipeDataModel) {
-        Log.d("???", favoriteRecipeDataModel.toString())
         favoritesDb.getDao().insertRecipe(favoriteRecipeDataModel)
+    }
+
+    suspend fun removeFavorite(favoriteRecipeDataModel: FavoriteRecipeDataModel) {
+        favoritesDb.getDao().removeRecipe(favoriteRecipeDataModel)
+    }
+
+    suspend fun checkFavorite(favoriteRecipeDataModel: FavoriteRecipeDataModel): Boolean {
+        return favoritesDb.getDao().checkFavorite(favoriteRecipeDataModel.id) != null
     }
 
     fun getFavoriteRecipes(): Flow<List<FavoriteRecipeDataModel>> {

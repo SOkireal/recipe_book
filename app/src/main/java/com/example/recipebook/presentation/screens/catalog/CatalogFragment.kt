@@ -10,7 +10,6 @@ import android.widget.SearchView.OnQueryTextListener
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.domain.model.RecipeModel
 import com.example.recipebook.adapter.BrowsingRecipeAdapter
 import com.example.recipebook.app.App
