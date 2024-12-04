@@ -6,7 +6,7 @@
     <dimen name="horizontal_margins_recipe_item">5dp</dimen>
     <dimen name="vertical_margins_recipe_item">5dp</dimen>
     <dimen name="corner_radius_recipe_item">17dp</dimen>
-    <dimen name="height_recipe_item">130dp</dimen>
+    <dimen name="height_recipe_item">180dp</dimen>
     <dimen name="margin_start_logo">10dp</dimen>
     <dimen name="margin_bottom_recycler">5dp</dimen>
     <dimen name="bottom_handler_button">30dp</dimen>

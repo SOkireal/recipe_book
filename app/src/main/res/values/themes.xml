@@ -4,5 +4,9 @@
         <item name="android:statusBarColor">@color/bottom_nav_bar</item>
     </style>
 
+    <style name="CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="colorAccent">@color/active_button</item>
+    </style>
+
     <style name="Theme.RecipeBook" parent="Base.Theme.RecipeBook" />
 </resources>

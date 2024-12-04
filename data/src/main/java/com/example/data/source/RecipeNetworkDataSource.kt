@@ -25,7 +25,7 @@ class RecipeNetworkDataSource {
             .request()
             .url
             .newBuilder()
-            .addQueryParameter("apiKey", "c6635fa1e0594590995d6badc043d882")
+            .addQueryParameter("apiKey", "8874fe1393c74d6fb13360f5d08d0918") // api keys - 8874fe1393c74d6fb13360f5d08d0918, c6635fa1e0594590995d6badc043d882
             .build()
 
         val request = chain

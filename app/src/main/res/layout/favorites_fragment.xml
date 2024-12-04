@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/background_fragment">
 
     <TextView
         android:id="@+id/title_logo_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_start_logo"
         android:fontFamily="@font/abril_fatface"
         android:searchIcon="@drawable/baseline_search_24"
         android:text="@string/title_logo"
         android:textColor="@color/active_button"
         android:textSize="@dimen/text_logo"
-        app:layout_constraintBottom_toBottomOf="@+id/search_recipe_sv"
+        android:paddingLeft="@dimen/margin_start_logo"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.widget.SearchView
-        android:id="@+id/search_recipe_sv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-        android:searchIcon="@drawable/baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipes_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="visible"
         android:layout_marginBottom="@dimen/margin_bottom_recycler"
         android:paddingHorizontal="5dp"
+        android:visibility="visible"
+        android:layout_marginTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_recipe_sv" />
+        app:layout_constraintTop_toBottomOf="@+id/title_logo_tv" />
 
     <ProgressBar
         android:id="@+id/loading_pb"
@@ -50,22 +40,29 @@
         android:indeterminateTint="@color/active_button"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_recipe_sv" />
+        app:layout_constraintEnd_toEndOf="@+id/recipes_list_recycler_view"
+        app:layout_constraintStart_toStartOf="@+id/recipes_list_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_logo_tv" />
 
     <TextView
         android:id="@+id/error_load_recipe_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
         android:fontFamily="@font/abril_fatface"
+        android:text="@string/error_load_recipe_list"
         android:textColor="@color/red"
         android:textSize="@dimen/error_text"
-        android:text="@string/error_load_recipe_list"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_recipe_sv" />
+        app:layout_constraintTop_toBottomOf="@+id/title_logo_tv" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="48dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

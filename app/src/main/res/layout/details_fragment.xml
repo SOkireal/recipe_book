@@ -11,6 +11,7 @@
         android:id="@+id/details_list_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,13 +46,15 @@
         android:id="@+id/logo_tv"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
-        android:searchIcon="@drawable/baseline_search_24"
-        android:background="@color/background_title_name_recipe"
         android:text="@string/title_logo"
+        android:fontFamily="@font/queensides_medium"
+        android:textStyle="bold"
         android:textColor="@color/active_button"
         android:textSize="@dimen/text_logo"
+        android:gravity="center"
+        android:searchIcon="@drawable/baseline_search_24"
+        android:background="@drawable/details_recipe_title_rounded_corner"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,18 +66,18 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
         app:layout_constraintEnd_toEndOf="@+id/logo_tv"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/logo_tv"
         app:srcCompat="@drawable/baseline_favorite_border_24" />
 
     <ImageView
         android:id="@+id/delete_favorites_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
         android:visibility="invisible"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
         app:layout_constraintEnd_toEndOf="@+id/logo_tv"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/logo_tv"
         app:srcCompat="@drawable/baseline_favorite_24" />
 
     <ImageView
@@ -83,8 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/logo_tv"
+        app:layout_constraintTop_toTopOf="@+id/logo_tv"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

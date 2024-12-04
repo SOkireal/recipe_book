@@ -2,10 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bottom_nav_bar">#fbb02d</color>
-    <color name="active_button">#FB6107</color>
-    <color name="background_fragment">#F3DE2C</color>
-    <color name="background_title_image_recipe">#FBB02D</color>
+    <color name="bottom_nav_bar">#CCD5AE</color>
+    <color name="active_button">#D4A373</color>
+    <color name="background_fragment">#FEFAE0</color>
+    <color name="background_title_image_recipe">#CCD5AE</color>
     <color name="background_title_name_recipe">#80000000</color>
     <color name="red">#FF0000</color>
 </resources>

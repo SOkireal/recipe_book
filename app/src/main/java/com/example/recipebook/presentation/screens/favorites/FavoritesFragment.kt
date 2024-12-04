@@ -43,11 +43,6 @@ class FavoritesFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickR
         binding.apply {
             recipesListRecyclerView.layoutManager = GridLayoutManager(root.context, 2)
             recipesListRecyclerView.adapter = browsingRecipeAdapter
-            searchRecipeSv.setOnQueryTextFocusChangeListener { _, hasFocus ->
-                titleLogoTv.isVisible = !hasFocus
-            }
-
-
         }
 
         lifecycleScope.launch {

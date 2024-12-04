@@ -3,113 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
 
-    <ImageView
-        android:id="@+id/image_recipe_details"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        app:cardCornerRadius="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="5dp">
+
+        <ImageView
+            android:id="@+id/image_recipe_details"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/recipe_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/background_title_name_recipe"
+            android:fontFamily="@font/queensides_medium"
+            android:lineHeight="25dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/name_recipe"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/image_recipe_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="RtlCompat,SpUsage" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/recipe_title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/background_title_name_recipe"
-        android:fontFamily="@font/abril_fatface"
-        android:paddingHorizontal="20dp"
-        android:text="@string/name_recipe"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/image_recipe_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="RtlCompat,SpUsage" />
-
-    <ImageView
-        android:id="@+id/servings_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
+        android:id="@+id/ready_in_minutes_tv"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ready_im_info_rounded_corner"
+        android:fontFamily="@font/queensides_medium"
         android:gravity="center"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingStart="30dp"
+        android:text="129"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/servings_tv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/readyInMinutes_iv"
-        app:srcCompat="@drawable/baseline_restaurant_24" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ImageView
         android:id="@+id/readyInMinutes_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginVertical="10dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_recipe_details"
+        app:layout_constraintBottom_toBottomOf="@+id/ready_in_minutes_tv"
+        app:layout_constraintStart_toStartOf="@id/ready_in_minutes_tv"
+        app:layout_constraintTop_toTopOf="@+id/ready_in_minutes_tv"
         app:srcCompat="@drawable/baseline_access_time_24" />
 
     <TextView
         android:id="@+id/servings_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/abril_fatface"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ready_im_info_rounded_corner"
+        android:fontFamily="@font/queensides_medium"
         android:gravity="center"
-        android:text="2"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/servings_iv"
-        app:layout_constraintTop_toBottomOf="@+id/readyInMinutes_tv" />
+        android:paddingStart="30dp"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ready_in_minutes_tv"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <TextView
-        android:id="@+id/servings_title_tv"
+    <ImageView
+        android:id="@+id/servings_iv"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="2dp"
-        android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
-        android:text="servings"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/servings_tv"
-        app:layout_constraintTop_toBottomOf="@+id/minutes_tv" />
-
-    <TextView
-        android:id="@+id/readyInMinutes_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
-        android:text="129"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/readyInMinutes_iv"
-        app:layout_constraintTop_toBottomOf="@+id/image_recipe_details" />
-
-    <TextView
-        android:id="@+id/minutes_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
-        android:text="min"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginStart="2dp"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintStart_toEndOf="@+id/readyInMinutes_tv"
-        app:layout_constraintTop_toBottomOf="@+id/image_recipe_details" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/servings_tv"
+        app:layout_constraintStart_toStartOf="@+id/servings_tv"
+        app:layout_constraintTop_toTopOf="@+id/servings_tv"
+        app:srcCompat="@drawable/baseline_restaurant_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
