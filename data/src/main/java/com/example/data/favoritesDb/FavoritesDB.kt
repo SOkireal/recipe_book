@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [FavoriteRecipeDataModel::class], version = 1)
-abstract class FavoritesDB: RoomDatabase() {
+internal abstract class FavoritesDB: RoomDatabase() {
     abstract fun getDao(): Dao
     companion object {
         fun getDb(context: Context): FavoritesDB {

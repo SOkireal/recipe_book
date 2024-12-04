@@ -9,5 +9,4 @@ class RemoveFavoriteUseCase(
     override suspend fun invoke(recipeModel: RecipeModel) {
         repository.removeFavorite(recipeModel)
     }
-
 }

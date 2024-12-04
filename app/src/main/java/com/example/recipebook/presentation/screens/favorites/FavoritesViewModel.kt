@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.domain.model.RecipeModel
 import com.example.domain.domain.usecase.GetFavoritesUseCase
 import com.example.recipebook.presentation.navigation.FragmentRouter
-import com.example.recipebook.presentation.screens.catalog.CatalogFragmentViewState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,12 +17,14 @@ class FavoritesViewModel(
 ): ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        CatalogFragmentViewState.Error(throwable.toString())
+        FavoritesFragmentViewState.Error(throwable.toString())
         viewModelScope.launch {
             _stateFlow.emit(FavoritesFragmentViewState.Error(throwable.toString()))
         }
     }
-    private val _stateFlow = MutableStateFlow<FavoritesFragmentViewState>(FavoritesFragmentViewState.Loading)
+    private val _stateFlow = MutableStateFlow<FavoritesFragmentViewState>(
+        FavoritesFragmentViewState.Loading
+    )
     val stateFlow = _stateFlow.asStateFlow()
 
     init {

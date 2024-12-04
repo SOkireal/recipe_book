@@ -3,7 +3,7 @@ package com.example.recipebook.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.domain.domain.model.RecipeModel
 
-class DiffUtilCallBack(
+internal class DiffUtilCallBack(
     private val oldList: List<RecipeModel>,
     private val newList: List<RecipeModel>
 ): DiffUtil.Callback() {

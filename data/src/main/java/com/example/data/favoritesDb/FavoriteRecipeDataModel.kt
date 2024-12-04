@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favorites")
 data class FavoriteRecipeDataModel(
     @PrimaryKey
-    var id: Int,
-    var title: String,
-    var image: String,
+    val id: Int,
+    val title: String,
+    val image: String,
 )

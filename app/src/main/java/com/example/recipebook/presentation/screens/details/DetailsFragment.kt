@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.domain.model.RecipeModel
-import com.example.recipebook.adapter.detais_recycler.DetailsAdapter
+import com.example.recipebook.adapter.details_adapter.DetailsAdapter
 import com.example.recipebook.app.App
 import com.example.recipebook.databinding.DetailsFragmentBinding
 import kotlinx.coroutines.launch
@@ -21,10 +21,9 @@ import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
 
-    lateinit var binding: DetailsFragmentBinding
     @Inject
     lateinit var detailsViewModel: DetailsViewModel
-
+    private lateinit var binding: DetailsFragmentBinding
     private val detailsAdapter = DetailsAdapter()
 
     override fun onAttach(context: Context) {
@@ -51,7 +50,6 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().onBackPressedDispatcher.addCallback {
-            Log.d("bbb", this.toString()) // TODO: !!!
             detailsViewModel.onBackClick()
         }
 
@@ -78,7 +76,7 @@ class DetailsFragment : Fragment() {
                     when (viewState) {
                         is DetailsFragmentViewState.Ready -> showReady(viewState)
                         is DetailsFragmentViewState.Loading -> showLoading()
-                        is DetailsFragmentViewState.Error -> showError(viewState)
+                        is DetailsFragmentViewState.Error -> showError()
                     }
                 }
             }
@@ -103,7 +101,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun showError(error: DetailsFragmentViewState.Error) {
+    private fun showError() {
         binding.apply {
             detailsListRv.isVisible = false
             loadingPb.isVisible = false

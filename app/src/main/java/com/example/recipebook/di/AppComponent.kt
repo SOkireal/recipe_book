@@ -1,8 +1,5 @@
 package com.example.recipebook.di
 
-import com.example.domain.domain.usecase.GetCatalogUseCase
-import com.example.domain.domain.usecase.GetDetailsUseCase
-import com.example.domain.domain.usecase.GetFavoritesUseCase
 import com.example.recipebook.presentation.activities.MainActivity
 import com.example.recipebook.presentation.screens.catalog.CatalogFragment
 import com.example.recipebook.presentation.screens.details.DetailsFragment

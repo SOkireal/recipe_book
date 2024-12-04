@@ -1,7 +1,5 @@
 package com.example.recipebook.presentation.navigation
 
-import android.util.Log
-import androidx.activity.OnBackPressedDispatcher
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,7 +11,6 @@ import com.example.recipebook.presentation.screens.favorites.FavoritesFragment
 class FragmentRouter {
     private lateinit var manager: FragmentManager
     private lateinit var bottomNavigationBarHandler: BottomNavigationBarHandler
-    private lateinit var onBackPressedDispatcher: OnBackPressedDispatcher
     private var containerId = -1
 
     fun setBottomNavigationBarHandler(bottomNavigationBarHandler: BottomNavigationBarHandler) {

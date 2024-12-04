@@ -4,10 +4,10 @@ import com.example.domain.domain.model.RecipeModel
 
 object RecipeModelToCatalogFragmentViewStateMapper: ((List<RecipeModel>?)->CatalogFragmentViewState) {
     override fun invoke(recipeList: List<RecipeModel>?): CatalogFragmentViewState {
-        return if (recipeList == null) {
-            CatalogFragmentViewState.Error("Error")
-        } else {
-            CatalogFragmentViewState.Ready(recipeList)
+        return when {
+            recipeList == null -> CatalogFragmentViewState.Error
+            recipeList.isEmpty() -> CatalogFragmentViewState.Empty
+            else -> CatalogFragmentViewState.Ready(recipeList)
         }
     }
 }

@@ -1,13 +1,13 @@
 package com.example.recipebook.presentation.screens.details
 
 import com.example.domain.domain.model.DetailsModel
-import com.example.recipebook.adapter.detais_recycler.DetailsItem
+import com.example.recipebook.adapter.details_adapter.DetailsItem
 
 
 object DetailsModelToDetailsFragmentViewStateMapper: ((DetailsModel) -> DetailsFragmentViewState) {
     override fun invoke(detailsModel: DetailsModel): DetailsFragmentViewState {
         return if (detailsModel == null) {
-            DetailsFragmentViewState.Error("Error")
+            DetailsFragmentViewState.Error
         } else {
 
             val detailsItems = mutableListOf<DetailsItem>()

@@ -9,13 +9,14 @@
         android:id="@+id/title_logo_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abril_fatface"
+        android:layout_marginTop="@dimen/margin_top_favorites_title_logo_tv"
+        android:fontFamily="@font/queensides_medium"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/margin_start_logo"
         android:searchIcon="@drawable/baseline_search_24"
         android:text="@string/title_logo"
         android:textColor="@color/active_button"
         android:textSize="@dimen/text_logo"
-        android:paddingLeft="@dimen/margin_start_logo"
-        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_bottom_recycler"
-        android:paddingHorizontal="5dp"
+        android:paddingHorizontal="@dimen/padding_horizontal_rv"
         android:visibility="visible"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="@dimen/margin_top_recycler"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +58,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_logo_tv" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="48dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

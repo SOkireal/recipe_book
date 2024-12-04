@@ -1,11 +1,10 @@
 package com.example.data.model
 
-
 data class DetailsIngredientsDataModel (
-  var id: Int,
-  var title: String,
-  var image: String,
-  var servings: Int,
-  var readyInMinutes: Int,
-  var extendedIngredients: ArrayList<IngredientDataModel> = arrayListOf(),
+  val id: Int,
+  val title: String,
+  val image: String,
+  val servings: Int,
+  val readyInMinutes: Int,
+  val extendedIngredients: ArrayList<IngredientDataModel> = arrayListOf(),
 )

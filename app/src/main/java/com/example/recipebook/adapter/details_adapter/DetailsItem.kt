@@ -1,4 +1,4 @@
-package com.example.recipebook.adapter.detais_recycler
+package com.example.recipebook.adapter.details_adapter
 
 sealed class DetailsItem {
     data class HeaderDetailsItem(

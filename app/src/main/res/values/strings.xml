@@ -4,4 +4,11 @@
     <string name="name_recipe">Name Recipe</string>
     <string name="title_logo">Recipe Book</string>
     <string name="error_load_recipe_list">The recipe list could not be loaded :(</string>
+    <string name="nothing_not_found">Nothing was found for your query...</string>
+    <string name="ingredients_title">Ingredients</string>
+    <string name="step_by_step_title">Step by step</string>
+    <string name="details_check_title">Ingredient/Step</string>
+    <string name="ready_in_minutes_tv">999</string>
+    <string name="servings_tv">333</string>
+    <string name="details_ingredients_title_tv">Title</string>
 </resources>

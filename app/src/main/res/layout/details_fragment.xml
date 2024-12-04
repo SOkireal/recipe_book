@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_fragment" >
@@ -11,7 +10,7 @@
         android:id="@+id/details_list_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/margin_bottom_details_fragment_rv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +42,9 @@
         app:layout_constraintTop_toTopOf="@+id/details_list_rv" />
 
     <TextView
-        android:id="@+id/logo_tv"
+        android:id="@+id/toolbar_tv"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="@dimen/height_details_fragment_toolbar"
         android:text="@string/title_logo"
         android:fontFamily="@font/queensides_medium"
         android:textStyle="bold"
@@ -54,7 +53,7 @@
         android:gravity="center"
         android:searchIcon="@drawable/baseline_search_24"
         android:background="@drawable/details_recipe_title_rounded_corner"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/margin_details_fragment_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,31 +62,34 @@
         android:id="@+id/add_favorites_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
-        app:layout_constraintEnd_toEndOf="@+id/logo_tv"
-        app:layout_constraintTop_toTopOf="@+id/logo_tv"
+        android:layout_marginEnd="@dimen/margin_end_favorites_iv"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_tv"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_tv"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_tv"
         app:srcCompat="@drawable/baseline_favorite_border_24" />
 
     <ImageView
         android:id="@+id/delete_favorites_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
         android:visibility="invisible"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
-        app:layout_constraintEnd_toEndOf="@+id/logo_tv"
-        app:layout_constraintTop_toTopOf="@+id/logo_tv"
+        android:layout_marginEnd="@dimen/margin_end_favorites_iv"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_tv"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_tv"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_tv"
         app:srcCompat="@drawable/baseline_favorite_24" />
 
     <ImageView
         android:id="@+id/back_button_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_tv"
-        app:layout_constraintStart_toStartOf="@+id/logo_tv"
-        app:layout_constraintTop_toTopOf="@+id/logo_tv"
+        android:layout_marginStart="@dimen/margin_start_back_button_iv"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_tv"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_tv"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_tv"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

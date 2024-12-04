@@ -7,5 +7,6 @@
     <color name="background_fragment">#FEFAE0</color>
     <color name="background_title_image_recipe">#CCD5AE</color>
     <color name="background_title_name_recipe">#80000000</color>
+    <color name="recipe_item_title">#855729</color>
     <color name="red">#FF0000</color>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.data.repository
 
-import android.util.Log
 import com.example.data.mapper.CatalogDataModelToRecipeModelMapper
 import com.example.data.mapper.DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper
 import com.example.data.mapper.FavoriteRecipesDataModelToRecipeModelMapper
@@ -32,8 +31,9 @@ class RecipeRepositoryImpl(
         val ingredients = recipeNetworkDataSource.getIngredients(recipeDataModel)
         val steps = recipeNetworkDataSource.getSteps(recipeDataModel)
         val isFavorite = favoriteDBDataSource.checkFavorite(favoriteRecipeDataModel)
-        Log.d("###", isFavorite.toString())
-        return DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper(ingredients, steps, isFavorite)
+        return DetailsIngredientsDataModelAndDetailsStepsDataModelToDetailsModelMapper(
+            ingredients, steps, isFavorite
+        )
     }
 
     override suspend fun getRecipeByName(recipeName: SearchRequestModel): List<RecipeModel> {

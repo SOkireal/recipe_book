@@ -17,10 +17,10 @@ class CatalogViewModel(
     val searchUseCase: SearchUseCase,
     val fragmentRouter: FragmentRouter,
 ): ViewModel() {
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        CatalogFragmentViewState.Error(throwable.toString())
+    private val exceptionHandler = CoroutineExceptionHandler { _, _ ->
+        CatalogFragmentViewState.Error
         viewModelScope.launch {
-            _stateFlow.emit(CatalogFragmentViewState.Error(throwable.toString()))
+            _stateFlow.emit(CatalogFragmentViewState.Error)
         }
     }
     private val _stateFlow = MutableStateFlow<CatalogFragmentViewState>(CatalogFragmentViewState.Loading)
@@ -28,7 +28,7 @@ class CatalogViewModel(
 
     init {
         viewModelScope.launch(exceptionHandler) {
-            val viewState = RecipeModelToCatalogFragmentViewStateMapper.invoke(getCatalogUseCase())
+            val viewState = RecipeModelToCatalogFragmentViewStateMapper(getCatalogUseCase())
             _stateFlow.emit(viewState)
         }
     }
@@ -41,7 +41,7 @@ class CatalogViewModel(
         viewModelScope.launch {
             _stateFlow.emit(CatalogFragmentViewState.Loading)
             val searchRequestModel = SearchRequestModel(recipeName)
-            val viewState = RecipeModelToCatalogFragmentViewStateMapper.invoke(searchUseCase(searchRequestModel))
+            val viewState = RecipeModelToCatalogFragmentViewStateMapper(searchUseCase(searchRequestModel))
             _stateFlow.emit(viewState)
         }
     }

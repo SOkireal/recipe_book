@@ -6,14 +6,13 @@ import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
-
 @Dao
-interface Dao {
-    @Insert
-    suspend fun insertRecipe(recipe: FavoriteRecipeDataModel)
-
+internal interface Dao {
     @Query("SELECT * FROM favorites")
     fun getAllFavoriteRecipes(): Flow<List<FavoriteRecipeDataModel>>
+
+    @Insert
+    suspend fun insertRecipe(recipe: FavoriteRecipeDataModel)
 
     @Delete
     suspend fun removeRecipe(recipe: FavoriteRecipeDataModel)

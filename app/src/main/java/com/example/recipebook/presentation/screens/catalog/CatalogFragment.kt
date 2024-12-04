@@ -11,7 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.domain.domain.model.RecipeModel
-import com.example.recipebook.adapter.BrowsingRecipeAdapter
+import com.example.recipebook.adapter.catalog_adapter.BrowsingRecipeAdapter
 import com.example.recipebook.app.App
 import com.example.recipebook.base.RootFragment
 import com.example.recipebook.databinding.CatalogFragmentBinding
@@ -19,14 +19,13 @@ import com.example.recipebook.presentation.navigation.FragmentRouter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRecipe {
 
     @Inject
     lateinit var catalogViewModel: CatalogViewModel
     @Inject
     lateinit var fragmentRouter: FragmentRouter
-    lateinit var binding: CatalogFragmentBinding
+    private lateinit var binding: CatalogFragmentBinding
     private val browsingRecipeAdapter = BrowsingRecipeAdapter(this)
 
     override fun onAttach(context: Context) {
@@ -49,6 +48,12 @@ class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRec
             recipesListRecyclerView.adapter = browsingRecipeAdapter
             searchRecipeSv.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 titleLogoTv.isVisible = !hasFocus
+                if (!hasFocus) {
+                    loadingPb.isVisible = false
+                    recipesListRecyclerView.isVisible = true
+                    errorLoadRecipeList.isVisible = false
+                    nothingNotFoundTv.isVisible = false
+                }
             }
 
             searchRecipeSv.setOnQueryTextListener(object: OnQueryTextListener {
@@ -69,7 +74,8 @@ class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRec
                 when (viewState) {
                     is CatalogFragmentViewState.Ready -> showReady(viewState)
                     is CatalogFragmentViewState.Loading -> showLoading()
-                    is CatalogFragmentViewState.Error -> showError(viewState)
+                    is CatalogFragmentViewState.Error -> showError()
+                    is CatalogFragmentViewState.Empty -> showEmpty()
                 }
             }
         }
@@ -89,8 +95,18 @@ class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRec
             loadingPb.isVisible = false
             recipesListRecyclerView.isVisible = true
             errorLoadRecipeList.isVisible = false
+            nothingNotFoundTv.isVisible = false
         }
         browsingRecipeAdapter.setData(ready.list)
+    }
+
+    private fun showEmpty() {
+        binding.apply {
+            loadingPb.isVisible = false
+            recipesListRecyclerView.isVisible = false
+            errorLoadRecipeList.isVisible = false
+            nothingNotFoundTv.isVisible = true
+        }
     }
 
     private fun showLoading() {
@@ -98,13 +114,15 @@ class CatalogFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickRec
             loadingPb.isVisible = true
             recipesListRecyclerView.isVisible = false
             errorLoadRecipeList.isVisible = false
+            nothingNotFoundTv.isVisible = false
         }
     }
 
-    private fun showError(error: CatalogFragmentViewState.Error) {
+    private fun showError() {
         binding.apply {
             loadingPb.isVisible = false
             recipesListRecyclerView.isVisible = false
+            nothingNotFoundTv.isVisible = false
             errorLoadRecipeList.isVisible = true
         }
     }

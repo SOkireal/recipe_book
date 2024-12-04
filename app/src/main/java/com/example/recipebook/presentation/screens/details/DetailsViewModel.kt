@@ -7,7 +7,6 @@ import com.example.domain.domain.usecase.AddFavoriteUseCase
 import com.example.domain.domain.usecase.GetDetailsUseCase
 import com.example.domain.domain.usecase.RemoveFavoriteUseCase
 import com.example.recipebook.presentation.navigation.FragmentRouter
-import com.example.recipebook.presentation.screens.catalog.CatalogFragmentViewState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,10 +20,10 @@ class DetailsViewModel(
 ): ViewModel() {
 
     private lateinit var currentRecipeModel: RecipeModel
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        CatalogFragmentViewState.Error(throwable.toString())
+    private val exceptionHandler = CoroutineExceptionHandler { _, _ ->
+        DetailsFragmentViewState.Error
         viewModelScope.launch {
-            _stateFlow.emit(DetailsFragmentViewState.Error(throwable.toString()))
+            _stateFlow.emit(DetailsFragmentViewState.Error)
         }
     }
     private val _stateFlow = MutableStateFlow<DetailsFragmentViewState>(DetailsFragmentViewState.Loading)
@@ -54,9 +53,5 @@ class DetailsViewModel(
         viewModelScope.launch {
             removeFavoriteUseCase(currentRecipeModel)
         }
-    }
-
-    companion object {
-        private const val TAG = "DetailsViewModel"
     }
 }

@@ -35,7 +35,11 @@ class AppModule(private val context: Context) {
         searchUseCase: SearchUseCase,
         fragmentRouter: FragmentRouter,
     ): CatalogViewModel {
-        return CatalogViewModel(getCatalogUseCase, searchUseCase, fragmentRouter)
+        return CatalogViewModel(
+            getCatalogUseCase,
+            searchUseCase,
+            fragmentRouter,
+        )
     }
 
     @Provides
@@ -43,7 +47,10 @@ class AppModule(private val context: Context) {
         getFavoritesUseCase: GetFavoritesUseCase,
         fragmentRouter: FragmentRouter,
     ): FavoritesViewModel {
-        return FavoritesViewModel(getFavoritesUseCase, fragmentRouter)
+        return FavoritesViewModel(
+            getFavoritesUseCase,
+            fragmentRouter,
+        )
     }
 
     @Provides

@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.domain.model.RecipeModel
-import com.example.recipebook.adapter.BrowsingRecipeAdapter
+import com.example.recipebook.adapter.catalog_adapter.BrowsingRecipeAdapter
 import com.example.recipebook.app.App
 import com.example.recipebook.base.RootFragment
 import com.example.recipebook.databinding.FavoritesFragmentBinding
@@ -21,8 +20,7 @@ class FavoritesFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickR
 
     @Inject
     lateinit var favoritesViewModel: FavoritesViewModel
-
-    lateinit var binding: FavoritesFragmentBinding
+    private lateinit var binding: FavoritesFragmentBinding
     private val browsingRecipeAdapter = BrowsingRecipeAdapter(this)
 
     override fun onAttach(context: Context) {
@@ -50,7 +48,7 @@ class FavoritesFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickR
                 when (viewState) {
                     is FavoritesFragmentViewState.Ready -> showReady(viewState)
                     is FavoritesFragmentViewState.Loading -> showLoading()
-                    is FavoritesFragmentViewState.Error -> showError(viewState)
+                    is FavoritesFragmentViewState.Error -> showError()
                 }
             }
         }
@@ -82,7 +80,7 @@ class FavoritesFragment : RootFragment(), BrowsingRecipeAdapter.ListenerOnClickR
         }
     }
 
-    private fun showError(error: FavoritesFragmentViewState.Error) {
+    private fun showError() {
         binding.apply {
             loadingPb.isVisible = false
             recipesListRecyclerView.isVisible = false
