@@ -36,13 +36,25 @@ android {
 val retrofitVersion = "2.11.0"
 val coroutineVersion = "1.6.2"
 val roomVersion = "2.6.1"
+val lifecycleLiveDataVersion = "2.8.7"
+val okHttpLoggingInterceptorVersion = "4.10.0"
+val junitVersion = "4.13.2"
+val junitJupiterVersion = "5.8.2"
+val mockitoVersion = "5.4.0"
 
 val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
 val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 val coroutineStdLib = "org.jetbrains.kotlin:kotlin-stdlib"
 val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
-val room = "androidx.room:room-runtime:$roomVersion"
+val roomRuntime = "androidx.room:room-runtime:$roomVersion"
 val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+val roomKtx = "androidx.room:room-ktx:$roomVersion"
+val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLiveDataVersion"
+val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$okHttpLoggingInterceptorVersion"
+val junit = "junit:junit:$junitVersion"
+val junitJupiter = "org.junit.jupiter:junit-jupiter:$junitJupiterVersion"
+val mockitoCore = "org.mockito:mockito-core:$mockitoVersion"
+val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
 
 dependencies {
     implementation(project(":domain"))
@@ -50,11 +62,13 @@ dependencies {
     implementation(coroutineCore)
     implementation(retrofit)
     implementation(retrofitConverterGson)
-    implementation(room)
+    implementation(roomRuntime)
     kapt(roomCompiler)
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:4.13.2")
+    implementation(roomKtx)
+    implementation(lifecycleLiveData)
+    implementation (okHttpLoggingInterceptor)
+    testImplementation(junit)
+    testImplementation(junitJupiter)
+    testImplementation(mockitoCore)
+    testImplementation(mockitoKotlin)
 }

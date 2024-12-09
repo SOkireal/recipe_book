@@ -1,3 +1,4 @@
+
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
@@ -9,6 +10,7 @@ java {
 }
 
 val coroutineVersion = "1.6.2"
+
 val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
 
 dependencies {

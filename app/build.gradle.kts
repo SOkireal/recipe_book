@@ -51,8 +51,11 @@ val materialVersion = "1.12.0"
 val constraintLayoutVersion = "2.1.4"
 val junitVersion = "4.13.2"
 val junitTestVersion = "1.2.1"
+val junitJupiterVersion = "5.8.2"
 val espressoVersion = "3.6.1"
 val glideVersion = "4.16.0"
+val mockitoVersion = "5.4.0"
+val legacySupportVersion = "1.0.0"
 
 
 val dagger = "com.google.dagger:dagger:$daggerVersion"
@@ -66,8 +69,12 @@ val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLa
 val javaxInject = "javax.inject:javax.inject:1"
 val junit = "junit:junit:$junitVersion"
 val junitTest = "androidx.test.ext:junit:$junitTestVersion"
+val junitJupiter = "org.junit.jupiter:junit-jupiter:$junitJupiterVersion"
 val espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
 val glide = "com.github.bumptech.glide:glide:$glideVersion"
+val mockitoCore = "org.mockito:mockito-core:$mockitoVersion"
+val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
+val legacySupportV4 = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
 
 dependencies {
     implementation(project(":domain"))
@@ -79,11 +86,14 @@ dependencies {
     implementation(navigationFragmentKtx)
     implementation(navigationUiKtx)
     implementation(dagger)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(legacySupportV4)
     kapt(daggerCompiler)
     implementation(javaxInject)
     testImplementation(junit)
     androidTestImplementation(junitTest)
     androidTestImplementation(espresso)
+    testImplementation(junitJupiter)
+    testImplementation(mockitoCore)
+    testImplementation(mockitoKotlin)
     implementation (glide)
 }
